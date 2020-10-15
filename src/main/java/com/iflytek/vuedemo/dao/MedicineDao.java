@@ -8,4 +8,9 @@ import java.util.List;
 
 public interface MedicineDao extends JpaRepository<Medicine,Integer> {
     List<Medicine> findAllByMedicineLike(String keyword);
+
+
+    List<Medicine> findByDisease(String name);
+
+    List<Medicine> findByMedicineLike(String name);
 }

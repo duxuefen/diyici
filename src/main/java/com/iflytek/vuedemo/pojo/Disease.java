@@ -16,6 +16,8 @@ public class Disease {
     public int disnumber;
     public String department;
 
+
+    
     public int getId() {
         return id;
     }
