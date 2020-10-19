@@ -13,4 +13,6 @@ public interface SymptomDao extends JpaRepository<Symptom,Integer> {
 
     List<Symptom> findBySymptom(String symptomName);
 
+
+
 }

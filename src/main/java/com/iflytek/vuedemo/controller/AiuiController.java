@@ -46,6 +46,14 @@ public class AiuiController {
         return symptomService.getDiseaseBySymptom(name);
     }
 
+
+    //根据多个症状查询
+    @RequestMapping("getDiseasesBySymptoms")
+    public List<String> getDiseasesBySymptom(String [] nmaes){
+        System.out.println(symptomService.getgetDiseaseBySymptoms(nmaes));
+        return symptomService.getgetDiseaseBySymptoms(nmaes);
+    }
+
 }
 
 
