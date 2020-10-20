@@ -19,7 +19,6 @@ public class LoginController {
     @Autowired
     UserService userService;
 
-    @CrossOrigin
     @PostMapping(value = "api/login")
     @ResponseBody
     public Result login(@RequestBody User requestUser) {

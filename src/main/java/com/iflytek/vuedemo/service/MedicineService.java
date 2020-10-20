@@ -30,9 +30,6 @@ public class MedicineService {
         return medicineDao.findAllByMedicineLike('%' + keywords + '%');
     }
 
-
-
-
     //根据病的名称查药品
     public List<Medicine> getByDisease(String name ){
         return medicineDao.findByDisease(name);
@@ -43,9 +40,5 @@ public class MedicineService {
     public List<Medicine> getByNameLike(String name ){
         return medicineDao.findByMedicineLike("%"+name+"%");
     }
-
-
-
-
 
 }

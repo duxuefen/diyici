@@ -13,28 +13,24 @@ public class DiseaseController {
     @Autowired
     DiseaseService diseaseService;
 
-
     @GetMapping("/api/disease")
     public List<Disease> list() throws Exception{
         return diseaseService.list();
     }
 
+    @PostMapping("/api/disease")
+    public Disease addOrUpdateDisease(@RequestBody Disease disease) throws Exception{
+        diseaseService.addOrUpdate(disease);
+        return disease;
+    }
 
     @PostMapping("/api/deldisease")
     public void deleteDiseaseById (@RequestBody Disease disease) throws Exception{
         diseaseService.deleteById(disease.getId());
     }
 
-
-    @PostMapping("/api/disease")
-    public Disease addOrUpdate(@RequestBody Disease disease) throws Exception{
-        diseaseService.addOrUpdate(disease);
-        return disease;
-    }
-
-
     @GetMapping("/api/searchDisease")
-    public List<Disease> searchResult(@RequestParam("keywords") String keywords){
+    public List<Disease> searchDiseaseResult(@RequestParam("keywords") String keywords){
         // 关键词为空时查询出所有书籍
         if ("".equals(keywords)) {
             return diseaseService.list();
@@ -42,4 +38,5 @@ public class DiseaseController {
             return diseaseService.Search(keywords);
         }
     }
+
 }
