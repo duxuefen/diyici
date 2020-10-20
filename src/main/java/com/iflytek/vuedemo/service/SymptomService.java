@@ -34,12 +34,12 @@ public class SymptomService {
     //返回病的名称
     public List<Symptom> getDiseaseBySymptom(String name){
         List<Symptom> list=symptomDao.findBySymptom(name);
-        List<String> diseases=new ArrayList<>();
-        for (int i=0;i<list.size();i++){
-            String disease=list.get(i).getDisease();
-            System.out.println("_---------->"+disease);
-            diseases.add(disease);
-        }
+//        List<String> diseases=new ArrayList<>();
+//        for (int i=0;i<list.size();i++){
+//            String disease=list.get(i).getDisease();
+//            System.out.println("_---------->"+disease);
+//            diseases.add(disease);
+//        }
 
         return list;
     }
