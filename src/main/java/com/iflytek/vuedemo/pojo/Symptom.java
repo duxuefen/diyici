@@ -3,7 +3,6 @@ package com.iflytek.vuedemo.pojo;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Table(name = "symptom")
@@ -15,9 +14,7 @@ public class Symptom {
     public int id;
     public String disease;
     public int disnumber;
-
     public String symptom;
-
 
     public int getId() {
         return id;
