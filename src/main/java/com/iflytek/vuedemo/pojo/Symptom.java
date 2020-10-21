@@ -47,4 +47,14 @@ public class Symptom {
     public void setSymptom(String symptom) {
         this.symptom = symptom;
     }
+
+    @Override
+    public String toString() {
+        return "Symptom{" +
+                "id=" + id +
+                ", disease='" + disease + '\'' +
+                ", disnumber=" + disnumber +
+                ", symptom='" + symptom + '\'' +
+                '}';
+    }
 }

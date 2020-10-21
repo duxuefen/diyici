@@ -5,6 +5,7 @@ package com.iflytek.vuedemo.controller;
 
 import com.iflytek.vuedemo.dao.SymptomDao;
 import com.iflytek.vuedemo.pojo.Medicine;
+import com.iflytek.vuedemo.pojo.Symptom;
 import com.iflytek.vuedemo.service.MedicineService;
 import com.iflytek.vuedemo.service.SymptomService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,7 +52,7 @@ public class AiuiController {
     @RequestMapping("/api/medicinebydisease")
     public List<Medicine> getbydisease(String names){
         String name=names.split(",")[0];
-
+        System.out.println(medicineService.getByDisease(name));
         return medicineService.getByDisease(name);
     }
 
@@ -66,7 +67,7 @@ public class AiuiController {
 
     //根据多个症状查询
     @RequestMapping("/api/querydiseaseBySymptom")
-    public List<String> getDiseasesBySymptom(String names){
+    public List<Symptom> getDiseasesBySymptom(String names){
        String[] name=names.split(",");
         System.out.println(symptomService.getgetDiseaseBySymptoms(name));
         return symptomService.getgetDiseaseBySymptoms(name);

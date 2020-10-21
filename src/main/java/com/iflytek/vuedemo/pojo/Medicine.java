@@ -92,4 +92,19 @@ public class Medicine {
     public void setAbs(String abs) {
         this.abs = abs;
     }
+
+    @Override
+    public String toString() {
+        return "Medicine{" +
+                "id=" + id +
+                ", medicine='" + medicine + '\'' +
+                ", disnumber=" + disnumber +
+                ", disease='" + disease + '\'' +
+                ", department='" + department + '\'' +
+                ", cover='" + cover + '\'' +
+                ", price=" + price +
+                ", status='" + status + '\'' +
+                ", abs='" + abs + '\'' +
+                '}';
+    }
 }
