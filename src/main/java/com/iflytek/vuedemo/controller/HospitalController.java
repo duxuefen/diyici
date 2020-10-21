@@ -20,6 +20,19 @@ public class HospitalController {
     @Autowired
     private HospitalService hospitalService;
 
+//    @RequestMapping("")
+//    public Result query() {
+//        List<Hospital> list = hospitalService.list();
+//        System.out.println(list);
+//        Page page = new Page();
+//        page.setData(list);
+//        return Result.SUCCESS(page);
+//    }
+
+
+//    @Autowired
+//    private DoctorService doctorService;
+
     @RequestMapping("/api/hospital")
     public Result query() {
         List<Hospital> list = hospitalService.list();

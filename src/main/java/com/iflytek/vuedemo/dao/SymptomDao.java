@@ -1,6 +1,5 @@
 package com.iflytek.vuedemo.dao;
 
-import com.iflytek.vuedemo.pojo.Disease;
 import com.iflytek.vuedemo.pojo.Symptom;
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -12,7 +11,4 @@ public interface SymptomDao extends JpaRepository<Symptom,Integer> {
     List<Symptom> findAllBySymptom(Symptom Symptom);
 
     List<Symptom> findBySymptom(String symptomName);
-
-
-
 }
