@@ -49,7 +49,7 @@ public class AiuiController {
 //    }
 
     //根剧病查药
-    @RequestMapping("/api/medicinebydisease")
+    @RequestMapping("/api/querymedicineByDisease")
     public List<Medicine> getbydisease(String names){
         String name=names.split(",")[0];
         System.out.println(medicineService.getByDisease(name));
