@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -60,9 +61,19 @@ public class AiuiController {
     //根据药品名字实现的模糊查询
     @RequestMapping("/api/querymedicineByName")
     public List<Medicine> getbyMedicine(String names){
-        String name=names.split(",")[0];
-        System.out.println(medicineService.getByNameLike(name));
-        return medicineService.getByNameLike(name);
+        String [] nameArray=names.split("，");
+        for (String name:nameArray){
+            System.out.println(name);
+        }
+        List<Medicine> list=new ArrayList<>();
+        for (String name:nameArray){
+            List<Medicine> byNameLike = medicineService.getByNameLike(name);
+            for (Medicine medicine:byNameLike){
+                list.add(medicine);
+            }
+        }
+        System.out.println(list);
+        return list;
     }
 
     //根据多个症状查询
