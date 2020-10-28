@@ -11,16 +11,16 @@ public class Symptom {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    public int id;
+    public Integer id;
     public String disease;
-    public int disnumber;
+    public Integer disnumber;
     public String symptom;
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -32,11 +32,11 @@ public class Symptom {
         this.disease = disease;
     }
 
-    public int getDisnumber() {
+    public Integer getDisnumber() {
         return disnumber;
     }
 
-    public void setDisnumber(int disnumber) {
+    public void setDisnumber(Integer disnumber) {
         this.disnumber = disnumber;
     }
 

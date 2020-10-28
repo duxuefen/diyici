@@ -11,21 +11,21 @@ public class Medicine {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    public int id;
+    public Integer id;
     public String medicine;
-    public int disnumber;
+    public Integer disnumber;
     public String disease;
     public String department;
     public String cover;
-    public float price;
+    public Float price;
     public String status;
     public String abs;
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -37,11 +37,11 @@ public class Medicine {
         this.medicine = medicine;
     }
 
-    public int getDisnumber() {
+    public Integer getDisnumber() {
         return disnumber;
     }
 
-    public void setDisnumber(int disnumber) {
+    public void setDisnumber(Integer disnumber) {
         this.disnumber = disnumber;
     }
 
@@ -69,11 +69,11 @@ public class Medicine {
         this.cover = cover;
     }
 
-    public float getPrice() {
+    public Float getPrice() {
         return price;
     }
 
-    public void setPrice(float price) {
+    public void setPrice(Float price) {
         this.price = price;
     }
 

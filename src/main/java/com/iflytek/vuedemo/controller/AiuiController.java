@@ -4,15 +4,14 @@ package com.iflytek.vuedemo.controller;
 //2.根据疾病查药品 ，输入一个疾病，查到多个药品
 
 import com.iflytek.vuedemo.dao.SymptomDao;
+import com.iflytek.vuedemo.pojo.Disease;
 import com.iflytek.vuedemo.pojo.Medicine;
 import com.iflytek.vuedemo.pojo.Symptom;
+import com.iflytek.vuedemo.service.DiseaseService;
 import com.iflytek.vuedemo.service.MedicineService;
 import com.iflytek.vuedemo.service.SymptomService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +24,8 @@ public class AiuiController {
     MedicineService medicineService;
     @Autowired
     SymptomService symptomService;
+    @Autowired
+    DiseaseService diseaseService;
 
 //    //根剧病查药
 //    @RequestMapping("/api/medicinebydisease")
@@ -84,11 +85,25 @@ public class AiuiController {
         return symptomService.getgetDiseaseBySymptoms(name);
     }
 
-
-
-    @PostMapping("/api/show")
-    public Object show(String str){
-        return str;
+    //药品表数据处理
+    @GetMapping("/api/dispose")
+    public List<Medicine> getDispose() throws Exception{
+        List<Medicine> list = new ArrayList<>();
+        List<Disease> diseases = new ArrayList<>();
+        list.addAll(medicineService.list());
+        for (Medicine medicine:list){
+//            String s=medicine.getCover().replace("http://localhost:8443/api/file/","");
+            medicine.setCover("http://localhost:8443/api/file/"+medicine.getCover());
+//            medicine.setCover(s);
+            diseases.addAll(diseaseService.exactSearch(medicine.disease));
+            if(diseases.size()!=0) {
+                medicine.setDisnumber(diseases.get(0).disnumber);
+                medicine.setDepartment(diseases.get(0).department);
+                medicineService.addOrUpdate(medicine);
+                diseases.clear();
+            }
+        }
+        return list;
     }
 }
 

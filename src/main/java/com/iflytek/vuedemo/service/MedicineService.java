@@ -14,8 +14,8 @@ public class MedicineService {
     MedicineDao medicineDao;
 
     public List<Medicine> list(){
-        Sort sort = new Sort(Sort.Direction.ASC, "id");
-        return medicineDao.findAll(sort);
+//        Sort sort = new Sort(Sort.Direction.ASC, "id");
+        return medicineDao.findAll();
     }
 
     public void addOrUpdate(Medicine medicine){

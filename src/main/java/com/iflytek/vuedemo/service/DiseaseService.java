@@ -30,4 +30,7 @@ public class DiseaseService {
         return diseaseDao.findAllByDiseaseLike('%' + keywords + '%');
     }
 
+    public List<Disease> exactSearch(String keywords){
+        return diseaseDao.findAllByDiseaseLike(keywords);
+    }
 }
