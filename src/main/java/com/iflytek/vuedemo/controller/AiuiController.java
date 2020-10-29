@@ -53,9 +53,20 @@ public class AiuiController {
     //根剧病查药
     @RequestMapping("/api/querymedicineByDisease")
     public List<Medicine> getbydisease(String names){
+        List<Medicine> list = new ArrayList<>();
+        List<Medicine> medicines =new ArrayList<>();
         String name=names.split(",")[0];
         System.out.println(medicineService.getByDisease(name));
-        return medicineService.getByDisease(name);
+        list.addAll(medicineService.getByDisease(name));
+        if (list.size()>=3){
+            for (int i=0;i<3;i++){
+                medicines.add(list.get(i));
+            }
+            return medicines;
+        }else {
+            return list;
+        }
+
     }
 
 
@@ -80,9 +91,19 @@ public class AiuiController {
     //根据多个症状查询
     @RequestMapping("/api/querydiseaseBySymptom")
     public List<Symptom> getDiseasesBySymptom(String names){
-       String[] name=names.split(",");
+        List<Symptom> list = new ArrayList<>();
+        List<Symptom> symptoms =new ArrayList<>();
+        String[] name=names.split(",");
         System.out.println(symptomService.getgetDiseaseBySymptoms(name));
-        return symptomService.getgetDiseaseBySymptoms(name);
+        list.addAll(symptomService.getgetDiseaseBySymptoms(name));
+        if (list.size()>=3){
+            for (int i=0;i<3;i++){
+                symptoms.add(list.get(i));
+            }
+            return symptoms;
+        }else {
+            return list;
+        }
     }
 
     //药品表数据处理
