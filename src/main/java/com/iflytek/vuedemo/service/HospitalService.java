@@ -29,4 +29,5 @@ public class HospitalService {
     public Hospital insertorupdate(Hospital hospital){
         return hospitalDao.save( hospital);
     }
+    public List<Hospital> queryHospital(String disease){return hospitalDao.findAllByDisease(disease);}
 }

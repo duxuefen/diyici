@@ -9,5 +9,6 @@ import java.util.List;
 public interface HospitalDao extends JpaRepository<Hospital,Integer> {
 
     List<Hospital> findAllByHospitalLike(String hospital);
+    List<Hospital> findAllByDisease(String disease);
 
 }

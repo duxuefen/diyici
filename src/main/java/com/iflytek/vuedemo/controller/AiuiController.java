@@ -5,9 +5,11 @@ package com.iflytek.vuedemo.controller;
 
 import com.iflytek.vuedemo.dao.SymptomDao;
 import com.iflytek.vuedemo.pojo.Disease;
+import com.iflytek.vuedemo.pojo.Hospital;
 import com.iflytek.vuedemo.pojo.Medicine;
 import com.iflytek.vuedemo.pojo.Symptom;
 import com.iflytek.vuedemo.service.DiseaseService;
+import com.iflytek.vuedemo.service.HospitalService;
 import com.iflytek.vuedemo.service.MedicineService;
 import com.iflytek.vuedemo.service.SymptomService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +28,8 @@ public class AiuiController {
     SymptomService symptomService;
     @Autowired
     DiseaseService diseaseService;
+    @Autowired
+    HospitalService hospitalService;
 
 //    //根剧病查药
 //    @RequestMapping("/api/medicinebydisease")
@@ -106,6 +110,16 @@ public class AiuiController {
         }
     }
 
+    @RequestMapping("/api/queryhospitalByDisease")
+    public List<Hospital> getHospitalByDisease(String names){
+        String [] nameArray=names.split("，");
+        List<Hospital> list = new ArrayList<>();
+        for(String name:nameArray){
+            list.addAll(hospitalService.queryHospital(name));
+        }
+        return list;
+    }
+
     //药品表数据处理
     @GetMapping("/api/dispose")
     public List<Medicine> getDispose() throws Exception{
@@ -113,9 +127,9 @@ public class AiuiController {
         List<Disease> diseases = new ArrayList<>();
         list.addAll(medicineService.list());
         for (Medicine medicine:list){
-//            String s=medicine.getCover().replace("http://localhost:8443/api/file/","");
-            medicine.setCover("http://localhost:8443/api/file/"+medicine.getCover());
-//            medicine.setCover(s);
+            String s=medicine.getCover().replace("/static","./static");
+//            medicine.setCover("http://localhost:8443/api/file/"+medicine.getCover());
+            medicine.setCover(s);
             diseases.addAll(diseaseService.exactSearch(medicine.disease));
             if(diseases.size()!=0) {
                 medicine.setDisnumber(diseases.get(0).disnumber);

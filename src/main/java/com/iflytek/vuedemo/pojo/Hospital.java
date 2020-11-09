@@ -16,6 +16,16 @@ public class Hospital {
     String hospital;
     Integer disnumber;
     String disease;
+    String site;
+
+    public String getSite() {
+        return site;
+    }
+
+    public void setSite(String site) {
+        this.site = site;
+    }
+
     public Integer getId() {
         return id;
     }
