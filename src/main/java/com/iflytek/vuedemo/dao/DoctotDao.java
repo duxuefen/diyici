@@ -12,6 +12,6 @@ public interface DoctotDao extends JpaRepository<Doctor,Integer> {
 
     List<Doctor> findAllByDoctorLike(String doctor);
 
-
+    List<Doctor> findAllByDisease(String disease);
 
 }

@@ -29,4 +29,5 @@ public class DoctorService {
     public List <Doctor> query(String doctor){
         return  doctotDao.findAllByDoctorLike(doctor);
     }
+    public List<Doctor> queryDoctor(String disease){return doctotDao.findAllByDisease(disease);}
 }

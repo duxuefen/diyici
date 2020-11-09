@@ -4,14 +4,8 @@ package com.iflytek.vuedemo.controller;
 //2.根据疾病查药品 ，输入一个疾病，查到多个药品
 
 import com.iflytek.vuedemo.dao.SymptomDao;
-import com.iflytek.vuedemo.pojo.Disease;
-import com.iflytek.vuedemo.pojo.Hospital;
-import com.iflytek.vuedemo.pojo.Medicine;
-import com.iflytek.vuedemo.pojo.Symptom;
-import com.iflytek.vuedemo.service.DiseaseService;
-import com.iflytek.vuedemo.service.HospitalService;
-import com.iflytek.vuedemo.service.MedicineService;
-import com.iflytek.vuedemo.service.SymptomService;
+import com.iflytek.vuedemo.pojo.*;
+import com.iflytek.vuedemo.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,6 +24,8 @@ public class AiuiController {
     DiseaseService diseaseService;
     @Autowired
     HospitalService hospitalService;
+    @Autowired
+    DoctorService doctorService;
 
 //    //根剧病查药
 //    @RequestMapping("/api/medicinebydisease")
@@ -116,6 +112,16 @@ public class AiuiController {
         List<Hospital> list = new ArrayList<>();
         for(String name:nameArray){
             list.addAll(hospitalService.queryHospital(name));
+        }
+        return list;
+    }
+
+    @RequestMapping("/api/querydoctorByDisease")
+    public List<Doctor> getDoctorByDisease(String names){
+        String [] nameArray=names.split("，");
+        List<Doctor> list = new ArrayList<>();
+        for (String name:nameArray){
+            list.addAll(doctorService.queryDoctor(name));
         }
         return list;
     }
